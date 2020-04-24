@@ -24,6 +24,10 @@ inputs:
     description: 'The title for the GitHub issue that is created'
     required: false
     default: 'ZAP Scan Baseline Report'
+  locale:
+    description: 'The locale used for the issue descriptions - default en_GB only availale with the weekly or live docker images'
+    required: false
+    default: 'en_gb'
 runs:
   using: 'node12'
   main: 'dist/index.js'

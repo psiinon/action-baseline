@@ -29,6 +29,7 @@ async function run() {
         let rulesFileLocation = core.getInput('rules_file_name');
         let cmdOptions = core.getInput('cmd_options');
         let issueTitle = core.getInput('issue_title');
+        let locale = core.getInput('locale');
 
         console.log('starting the program');
         console.log('github run id :' + currentRunnerID);
@@ -46,7 +47,8 @@ async function run() {
         }
 
         let command = (`docker run --user root -v ${workspace}:/zap/wrk/:rw --network="host" ` +
-            `-t ${docker_name} zap-baseline.py -t ${target} -J ${jsonReportName} -w ${mdReportName}  -r ${htmlReportName} ${cmdOptions}`);
+            `-t ${docker_name} zap-baseline.py -t ${target} -J ${jsonReportName} -w ${mdReportName}  -r ${htmlReportName} ` +
+            `-z "-config view.locale=${locale}" ${cmdOptions}`);
 
         if (plugins.length !== 0) {
             command = command + ` -c ${rulesFileLocation}`
