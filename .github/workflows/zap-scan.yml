@@ -17,4 +17,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://www.zaproxy.org/'
+          docker_name: 'owasp/zap2docker-live'
           locale: 'fr_FR'
