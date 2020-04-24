@@ -17,3 +17,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://www.zaproxy.org/'
+          locale: 'fr_FR'
