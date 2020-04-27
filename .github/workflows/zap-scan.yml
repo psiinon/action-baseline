@@ -1,7 +1,7 @@
 on:
   schedule:
     # At 01:00.
-    - cron:  '58 15 * * *'
+    - cron:  '53 12 * * *'
 
 jobs:
   zap_scan:
@@ -13,9 +13,10 @@ jobs:
         with:
           ref: master
       - name: ZAP Scan
-        uses: psiinon/action-baseline@v0.2.0
+        uses: zaproxy/action-baseline@v0.2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://www.zaproxy.org/'
           docker_name: 'owasp/zap2docker-live'
-          locale: 'fr_FR'
+          cmd_options: '-z "-config view.locale=fr_FR"'
+          # locale: 'fr_FR'
